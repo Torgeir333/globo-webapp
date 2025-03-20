@@ -1,0 +1,16 @@
+# 20.03.25: Modul7, kopierte innhold i /m5/gitignore.example
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+# .tfplan files
+*.tfplan
+
+# .pem files
+*.pem
