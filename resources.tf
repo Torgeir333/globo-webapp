@@ -25,6 +25,20 @@ locals {
 # RESOURCES
 ##################################################################################
 
+# I video 7.4 kaller Bellavance dette en EC2 instance, OK
+# Han snakker også om ssh-keys som blir generert av en modul, OK
+# Provisioner file er et script som blir kjørt på EC2 instansen,
+# som jeg ut fra userdata.sh synes å starte en NginX service, og legger
+# så inn en index.html fil nginx path som sier noe Taco greier: En hallo
+# verden webside.
+# Det er provisioner exec som faktisk kjører denne .sh filen etter at den 
+# er blitt kopiert over.
+
+# Det er verre litt lengre ned: video 1.55 inn: da Bellavance snakker om .tpl (tror jeg)
+# som skal liste EC2 instanser, og noe om en SaaS som den skal snakke med.
+# Dette er uansett under den såkalte null-instance, som i følge senere videoer
+# skal bli deprecated (og dette i juni 2023 så det er rart det ennå fungerer).
+
 resource "aws_instance" "main" {
   count         = length(data.tfe_outputs.networking.nonsensitive_values.public_subnets)
   ami           = nonsensitive(data.aws_ssm_parameter.amzn2_linux.value)
@@ -66,6 +80,7 @@ resource "aws_instance" "main" {
 
 }
 
+# Video 7.4 : "configuration file": er ikke helt klart for meg
 resource "null_resource" "webapp" {
 
   triggers = {
