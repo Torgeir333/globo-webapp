@@ -65,13 +65,13 @@ resource "aws_instance" "main" {
 
 }
 
-# Video 7.4 : "configuration file": er ikke helt klart for meg
-resource "null_resource" "webapp" {
+# Ny 27.03.25: modul 8.9
+resource "terraform_data" "webapp" {
 
-  triggers = {
-    webapp_server_count = length(aws_instance.main.*.id)
-    web_server_names    = join(",", aws_instance.main.*.id)
-  }
+  triggers_replace = [
+    length(aws_instance.main.*.id),
+    join(",", aws_instance.main.*.id)
+  ]
 
   provisioner "file" {
     content = templatefile("./templates/application.config.tpl", {
