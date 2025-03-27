@@ -25,6 +25,8 @@ locals {
 # RESOURCES
 ##################################################################################
 
+# 26.03.25: Terraform workspace run gav ingen webside. Prøver fra Github.
+
 # I video 7.4 kaller Bellavance dette en EC2 instance, OK
 # Han snakker også om ssh-keys som blir generert av en modul, OK
 # Provisioner file er et script som blir kjørt på EC2 instansen,
